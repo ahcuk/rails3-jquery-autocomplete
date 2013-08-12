@@ -32,8 +32,6 @@ module Rails3JQueryAutocomplete
           class Dog ; end
 
           model = Dog
-          scoped = []
-          whered = []
           term = 'query'
           method = :field
 
@@ -50,7 +48,7 @@ module Rails3JQueryAutocomplete
           mock(self).get_autocomplete_where_clause(model, term, method, {}) { ["WHERE something"] }
           mock(model).table_name.times(any_times) { 'model_table_name' }
 
-          mock(model).scoped { model }
+          mock(model).all { model }
           mock(model).select(["field"]) { model }
           mock(model).where(["WHERE something"]).mock!.limit(10).mock!.
               order("order ASC") { 1 }
